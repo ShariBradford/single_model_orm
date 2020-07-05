@@ -1,0 +1,36 @@
+(djangoPy3Env) C:\Users\shari\OneDrive\Documents\Coding Dojo\python_stack\django\django_orm\single_model_orm>python manage.py shell
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:20:19) [MSC v.1925 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import User
+>>> User.objects.create(first_name='Shari',last_name='Bradford',email_address = 'shari.bradford@gmail.com',age=52)
+<User: User object (1)>
+>>> quit()
+
+(djangoPy3Env) C:\Users\shari\OneDrive\Documents\Coding Dojo\python_stack\django\django_orm\single_model_orm>python manage.py makemigrations
+No changes detected
+
+(djangoPy3Env) C:\Users\shari\OneDrive\Documents\Coding Dojo\python_stack\django\django_orm\single_model_orm>python manage.py shell
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:20:19) [MSC v.1925 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import User
+>>> User.objects.create(first_name='Bertie',last_name='Wooster',email_address = 'bertie.wooster@gmail.com',age=29)
+<User object: Bertie Wooster (2)>
+>>> User.objects.create(first_name='Eliza',last_name='Bennett',email_address = 'eliza.bennett@gmail.com',age=20)
+<User object: Eliza Bennett (3)>
+>>> User.objects.all()
+<QuerySet [<User object: Shari Bradford (1)>, <User object: Bertie Wooster (2)>, <User object: Eliza Bennett (3)>]>
+>>> User.objects.last()
+<User object: Eliza Bennett (3)>
+>>> User.objects.first()
+<User object: Shari Bradford (1)>
+>>> User.objects.get(id=2).delete()
+(1, {'users_app.User': 1})
+>>> User.objects.all()
+<QuerySet [<User object: Shari Bradford (1)>, <User object: Eliza Bennett (3)>]>
+>>> User.objects.order_by('first_name').all()
+<QuerySet [<User object: Eliza Bennett (3)>, <User object: Shari Bradford (1)>]>
+>>> User.objects.order_by('-first_name').all()
+<QuerySet [<User object: Shari Bradford (1)>, <User object: Eliza Bennett (3)>]>
+>>>
